@@ -32,6 +32,22 @@ const FORM_MODELS = {
     { value: 'XXL', title: 'XXL|> 80 kg' },
     { value: 'Other', title: 'Khác' },
   ],
+  class: [
+    { value: '1', title: 'Y-sác' },
+    { value: '2', title: 'Môi-se' },
+    { value: '3', title: 'Giô-suê' },
+    { value: '4', title: 'Đê-bô-ra' },
+    { value: '5', title: 'Ru-tơ' },
+    { value: '6', title: 'Sa-mu-ên A' },
+    { value: '7', title: 'Sa-mu-ên B' },
+    { value: '8', title: 'Đa-vít A' },
+    { value: '9', title: 'Đa-vít B' },
+    { value: '10', title: 'Ê-li-sê' },
+    { value: '11', title: 'Ê-xơ-tê' },
+    { value: '12', title: 'Ma-ri A' },
+    { value: '13', title: 'Ma-ri B' },
+    { value: '14', title: 'Chưa tham gia BTN' },
+  ],
   // eslint-disable-next-line prefer-spread
   groups: Array.apply(null, { length: 16 })
     .map(Number.call, Number)
@@ -146,7 +162,7 @@ export default function FormPage() {
       <div className="gap-4 h-auto p-4 md:p-8 min-w-full max-w-md mx-auto">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl lg font-bold uppercase">
-            Phiếu Đăng Ký Trại LINK 30/4
+            FORM ĐĂNG KÍ TKH THIẾU NHI 2021{' '}
           </h1>
           <div>
             <div className="bg-gray-700 mt-8 p-4 text-white rounded">
@@ -154,18 +170,14 @@ export default function FormPage() {
                 <em>Quy Định</em>
               </h2>
               <ul className="mt-4 text-lg">
-                <li className="mt-2">
-                  * Nhận đăng ký và hoàn tất lệ phí: 04/04/2020 - 18/04/2020
-                </li>
+                <li className="mt-2">* Nhận đăng ký và hoàn tất lệ phí:</li>
               </ul>
               <h2 className="mt-4 text-lg font-semibold">
                 <em>Thời gian & Địa điểm</em>
               </h2>
               <ul className="mt-4 text-lg">
-                <li className="mt-2">* 6h sáng 30/4 - 17h chiều 1/5</li>
-                <li className="mt-2">
-                  * Khu du lịch Thảo Thiện Garden - Đồng Nai
-                </li>
+                <li className="mt-2">* 00h00 - 00h00</li>
+                <li className="mt-2">* Khu du lịch ....</li>
               </ul>
             </div>
             <div className="mt-8">
@@ -180,8 +192,7 @@ export default function FormPage() {
             <div>
               <h3 className="text-lg font-semibold">Thông tin cá nhân</h3>
               <span className="text-gray-500 text-opacity-75">
-                Bao gồm các thông tin cơ bản về bạn để BTC đăng ký thủ tục xe,
-                lều trại, chia lều...
+                Bao gồm các thông tin cơ bản về bé để ban tổ chức nắm
               </span>
             </div>
             <div className="">
@@ -191,7 +202,7 @@ export default function FormPage() {
                   className="label text-lg"
                   errorClassName="label text-lg error"
                 >
-                  Họ và tên
+                  Họ và tên phụ huynh
                 </Label>
                 <TextField
                   name="fullName"
@@ -204,29 +215,8 @@ export default function FormPage() {
                 <FieldError name="fullName" className="error-message" />
               </div>
               <div className="flex flex-col mt-8">
-                <Label
-                  name="nationalId"
-                  className="text-lg"
-                  errorClassName="label text-lg error"
-                >
-                  Số CMND
-                </Label>
-                <TextField
-                  className="h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
-                  name="nationalId"
-                  placeholder="261506123"
-                  validation={{
-                    required: true,
-                    pattern: {
-                      value: /^[0-9]{9,12}$/,
-                    },
-                  }}
-                />
-                <FieldError name="nationalId" className="error-message" />
-              </div>
-              <div className="flex flex-col mt-8">
                 <Label name="phoneNumber" className="text-lg">
-                  Số điện thoại
+                  Số điện thoại phụ huynh
                 </Label>
                 <TextField
                   className="h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
@@ -242,7 +232,25 @@ export default function FormPage() {
                 <FieldError name="phoneNumber" className="error-message" />
               </div>
               <div className="flex flex-col mt-8">
-                <Label className="text-lg">Ngày sinh</Label>
+                <Label
+                  name="fullNameChild"
+                  className="label text-lg"
+                  errorClassName="label text-lg error"
+                >
+                  Đăng kí cho em
+                </Label>
+                <TextField
+                  name="fullNameChild"
+                  className="input h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
+                  errorClassName="input error"
+                  type="text"
+                  placeholder="Nguyễn Văn B"
+                  validation={{ required: true }}
+                />
+                <FieldError name="fullNameChild" className="error-message" />
+              </div>
+              <div className="flex flex-col mt-8">
+                <Label className="text-lg">Ngày tháng năm sinh</Label>
                 <div className="grid grid-cols-3 gap-2 mt-2">
                   <NumberField
                     className="h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
@@ -264,8 +272,8 @@ export default function FormPage() {
                     className="h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                     name="yearOfBirth"
                     placeholder="năm"
-                    max={2010}
-                    min={1980}
+                    max={2019}
+                    min={2009}
                     validation={{ required: true }}
                   />
                 </div>
@@ -301,19 +309,19 @@ export default function FormPage() {
           <hr className="mt-8 bg-gray-700" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
-              <h3 className="text-lg font-semibold">Thông tin nhóm</h3>
-              <span className="text-gray-500 text-opacity-75">
+              <h3 className="text-lg font-semibold">Thông tin lớp TCN</h3>
+              {/* <span className="text-gray-500 text-opacity-75">
                 Chọn nhóm nhỏ bạn đang sinh hoạt, thời gian bạn nhóm lại tại Ban
                 thanh niên Gia Định
-              </span>
+              </span> */}
             </div>
             <div className="">
               <div className="flex flex-col">
-                <label className="text-lg">Nhóm nhỏ</label>
+                <label className="text-lg">Lớp</label>
                 <GridRadio
                   // eslint-disable-next-line prefer-spread
-                  list={FORM_MODELS.groups}
-                  cols={4}
+                  list={FORM_MODELS.class}
+                  cols={3}
                   onSelect={(value) => onChangeRadio('group')(value)}
                 />
               </div>
