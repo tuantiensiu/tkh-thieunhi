@@ -86,8 +86,11 @@ const FORM_MODELS = {
     { value: 'FEMALE', title: 'Nữ' },
   ],
   typeLearn: [
-    {value: 'full', title: 'Tham dự trọn khóa học Thánh Kinh Hè'},
-    {value: 'not_full', title: 'Tham dự môn học ngoại khóa cho bé từ 9-12 tuổi'},
+    { value: 'full', title: 'Tham dự trọn khóa học Thánh Kinh Hè' },
+    {
+      value: 'not_full',
+      title: 'Tham dự môn học ngoại khóa cho bé từ 9-12 tuổi',
+    },
   ],
   // careSpecial: [
   //   {value: 'care', title: ''}
@@ -224,7 +227,7 @@ export default function FormPage() {
                 <TextField
                   name="fullName"
                   className="h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
-                  errorClassName="input error"
+                  errorClassName="input error h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                   type="text"
                   placeholder="Nguyễn Văn A"
                   validation={{ required: true }}
@@ -259,7 +262,7 @@ export default function FormPage() {
                 <TextField
                   name="fullNameChild"
                   className="input h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
-                  errorClassName="input error"
+                  errorClassName="input error h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                   type="text"
                   placeholder="Nguyễn Văn B"
                   validation={{ required: true }}
@@ -309,12 +312,13 @@ export default function FormPage() {
                   className="label text-lg"
                   errorClassName="label text-lg error"
                 >
-                  Tình trạng sức khoẻ đặc biệt của em (các trường hợp cần quan tâm đặc biệt)
+                  Tình trạng sức khoẻ đặc biệt của em (các trường hợp cần quan
+                  tâm đặc biệt)
                 </Label>
                 <TextField
                   name="specicalCare"
                   className="input h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
-                  errorClassName="input error"
+                  errorClassName="input error h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                   type="text"
                   placeholder=""
                 />
@@ -331,7 +335,7 @@ export default function FormPage() {
                   <TextField
                     name="clothesSize"
                     className="input h-14 bg-gray-300 rounded text-2xl p-4 mt-2"
-                    errorClassName="input error"
+                    errorClassName="input error h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                     type="text"
                     placeholder="Nhập size áo khác"
                     validation={{ required: true }}
@@ -351,7 +355,9 @@ export default function FormPage() {
           <hr className="mt-8 bg-gray-700" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
-              <h3 className="text-lg font-semibold">Thông tin lớp Trường Chúa Nhật</h3>
+              <h3 className="text-lg font-semibold">
+                Thông tin lớp Trường Chúa Nhật
+              </h3>
               {/* <span className="text-gray-500 text-opacity-75">
                 Chọn nhóm nhỏ bạn đang sinh hoạt, thời gian bạn nhóm lại tại Ban
                 thanh niên Gia Định
@@ -425,7 +431,10 @@ export default function FormPage() {
 
                 <strong className="mt-4">
                   Chi tiết về việc đăng ký liên hệ Thủ quỹ Ban Thiếu Nhi:
-                  <span className="text-green-500"> ĐOÀN THỊ MỸ THỌ  0936 135 310</span>
+                  <span className="text-green-500">
+                    {' '}
+                    ĐOÀN THỊ MỸ THỌ 0936 135 310
+                  </span>
                 </strong>
               </div>
             </div>
