@@ -85,6 +85,13 @@ const FORM_MODELS = {
     { value: 'MALE', title: 'Nam' },
     { value: 'FEMALE', title: 'Nữ' },
   ],
+  typeLearn: [
+    {value: 'full', title: 'Tham dự trọn khóa học Thánh Kinh Hè'},
+    {value: 'not_full', title: 'Tham dự môn học ngoại khóa cho bé từ 9-12 tuổi'},
+  ],
+  // careSpecial: [
+  //   {value: 'care', title: ''}
+  // ]
 }
 
 export default function FormPage() {
@@ -102,6 +109,7 @@ export default function FormPage() {
     group: 1,
     joinAge: 'gt3',
     gender: 'MALE',
+    typeLearn: 'full',
     paymentLevel: '515000',
     offering: 0,
     paymentMethod: 'BANK',
@@ -125,6 +133,7 @@ export default function FormPage() {
       variables: {
         input: {
           fullName: String(data.fullName),
+          fullNameChild: String(data.fullNameChild),
           nationalId: String(data.nationalId),
           phoneNumber: data.phoneNumber,
           birthday: new Date(
@@ -132,6 +141,7 @@ export default function FormPage() {
             data.monthOfBirth - 1,
             data.dayOfBirth
           ),
+          spesicalCare: String(data.spesicalCare),
           meta: JSON.stringify(meta),
         },
       },
@@ -188,7 +198,7 @@ export default function FormPage() {
               </ul>
             </div>
             <div className="mt-8">
-              <span>
+              <span className="text-red-500 text-lg">
                 Để thuận tiện cho công tác tổ chức, vui lòng điền đầy đủ các
                 thông tin sau
               </span>
@@ -294,6 +304,23 @@ export default function FormPage() {
                 />
               </div>
               <div className="flex flex-col mt-8">
+                <Label
+                  name="specialCare"
+                  className="label text-lg"
+                  errorClassName="label text-lg error"
+                >
+                  Tình trạng sức khoẻ đặc biệt của em (các trường hợp cần quan tâm đặc biệt)
+                </Label>
+                <TextField
+                  name="specialCare"
+                  className="input h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
+                  errorClassName="input error"
+                  type="text"
+                  placeholder=""
+                />
+                <FieldError name="specialCare" className="error-message" />
+              </div>
+              <div className="flex flex-col mt-8">
                 <label className="text-lg">Size áo</label>
                 <GridRadio
                   list={FORM_MODELS.clothesSize}
@@ -311,12 +338,20 @@ export default function FormPage() {
                   />
                 )}
               </div>
+              <div className="flex flex-col mt-8">
+                <label className="text-lg">Đăng kí</label>
+                <GridRadio
+                  list={FORM_MODELS.typeLearn}
+                  onSelect={(value) => onChangeRadio('typeLearn')(value)}
+                  cols={1}
+                />
+              </div>
             </div>
           </div>
           <hr className="mt-8 bg-gray-700" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
-              <h3 className="text-lg font-semibold">Thông tin lớp TCN</h3>
+              <h3 className="text-lg font-semibold">Thông tin lớp Trường Chúa Nhật</h3>
               {/* <span className="text-gray-500 text-opacity-75">
                 Chọn nhóm nhỏ bạn đang sinh hoạt, thời gian bạn nhóm lại tại Ban
                 thanh niên Gia Định
