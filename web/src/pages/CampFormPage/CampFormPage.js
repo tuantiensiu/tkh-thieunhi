@@ -25,12 +25,19 @@ const CAMP_REGISTER = gql`
 `
 const FORM_MODELS = {
   clothesSize: [
-    { value: 'S', title: 'S|< 50 kg' },
-    { value: 'M', title: 'M|50-60 kg' },
-    { value: 'L', title: 'L|60-70 kg' },
-    { value: 'XL', title: 'XL|< 80 kg' },
-    { value: 'XXL', title: 'XXL|> 80 kg' },
-    { value: 'Other', title: 'Khác' },
+    { value: '2', title: '2|12-15 kg' },
+    { value: '4', title: '4|16-20 kg' },
+    { value: '6', title: '6|21-25 kg' },
+    { value: '8', title: '8|26-30 kg' },
+    { value: '10', title: '10|31-34 kg' },
+    { value: '12', title: '12|35-38 kg' },
+    { value: '14', title: '14|39-42 kg' },
+    { value: 'S', title: 'S|43-46 kg' },
+    { value: 'M', title: 'M|47-50 kg' },
+    { value: 'L', title: 'L|50-54 kg' },
+    { value: 'XL', title: 'XL|55-62 kg' },
+    { value: 'XXL', title: '2XL|63-70 kg' },
+    { value: 'XXXL', title: '3XL|71-90 kg' },
   ],
   class: [
     { value: '1', title: 'Y-sác' },
@@ -57,9 +64,9 @@ const FORM_MODELS = {
     { value: 'lt3', title: 'Dưới 3 tháng' },
   ],
   paymentLevel: {
-    lt3: [{ value: '515000', title: 'Chi phí trại viên|515.000đ' }],
+    lt3: [{ value: '150000', title: 'Chi phí trại viên|150.000đ' }],
     gt3: [
-      { value: '515000', title: 'Chi phí trại viên|515.000đ' },
+      { value: '150000', title: 'Chi phí trại viên|150.000đ' },
       // { value: '1100000', title: 'Thu nhập 3-5 triệu|1.100.000đ' },
       // { value: '1300000', title: 'Thu nhập trên 5-7 triệu|1.300.000đ' },
       // { value: '1500000', title: 'Thu nhập trên 7 triệu|1.500.000đ' },
@@ -67,8 +74,8 @@ const FORM_MODELS = {
   },
   paymentMethod: [
     { value: 'BANK', title: 'Chuyển khoản trực tiếp cho thủ quỹ' },
-    { value: 'GROUP_LEADER', title: 'Nộp tiền mặt trực tiếp cho nhóm trưởng' },
-    { value: 'MANAGER', title: 'Nộp tiền mặt trực tiếp cho thủ quỹ' },
+    { value: 'GROUP_LEADER', title: 'Nộp tiền mặt trực tiếp cho giáo viên' },
+    // { value: 'MANAGER', title: 'Nộp tiền mặt trực tiếp cho thủ quỹ' },
   ],
   paymentStage: [
     { value: 'FULL', title: 'Đóng đủ một lần' },
@@ -286,7 +293,7 @@ export default function FormPage() {
                   cols={2}
                 />
               </div>
-              {/* <div className="flex flex-col mt-8">
+              <div className="flex flex-col mt-8">
                 <label className="text-lg">Size áo</label>
                 <GridRadio
                   list={FORM_MODELS.clothesSize}
@@ -303,7 +310,7 @@ export default function FormPage() {
                     validation={{ required: true }}
                   />
                 )}
-              </div> */}
+              </div>
             </div>
           </div>
           <hr className="mt-8 bg-gray-700" />
@@ -325,14 +332,14 @@ export default function FormPage() {
                   onSelect={(value) => onChangeRadio('group')(value)}
                 />
               </div>
-              <div className="flex flex-col mt-8">
+              {/* <div className="flex flex-col mt-8">
                 <label className="text-lg">Thời gian nhóm lại</label>
                 <GridRadio
                   list={FORM_MODELS.joinAge}
                   cols={2}
                   onSelect={(value) => onChangeRadio('joinAge')(value)}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <hr className="mt-8 bg-gray-700" />
@@ -357,14 +364,14 @@ export default function FormPage() {
                   onSelect={(value) => onChangeRadio('paymentLevel')(value)}
                 />
               </div>
-              <div className="flex flex-col mt-8">
+              {/* <div className="flex flex-col mt-8">
                 <label className="text-lg">Quy cách</label>
                 <GridRadio
                   list={FORM_MODELS.paymentStage}
                   cols={1}
                   onSelect={(value) => onChangeRadio('paymentStage')(value)}
                 />
-              </div>
+              </div> */}
               <div className="flex flex-col mt-8">
                 <label className="text-lg">Dâng hiến:</label>
                 <NumberField
@@ -382,8 +389,8 @@ export default function FormPage() {
                 />
 
                 <strong className="mt-4">
-                  Chi tiết về việc đăng ký liên hệ Thủ quỹ Ban Thanh Niên:
-                  <span className="text-green-500"> Như Ngọc 0902457367</span>
+                  Chi tiết về việc đăng ký liên hệ Thủ quỹ Ban Thiếu Nhi:
+                  <span className="text-green-500"> ĐOÀN THỊ MỸ THỌ  0936 135 310</span>
                 </strong>
               </div>
             </div>
