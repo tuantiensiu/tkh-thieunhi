@@ -141,7 +141,7 @@ export default function FormPage() {
             data.monthOfBirth - 1,
             data.dayOfBirth
           ),
-          spesicalCare: String(data.spesicalCare),
+          specicalCare: String(data.specicalCare),
           meta: JSON.stringify(meta),
         },
       },
@@ -223,7 +223,7 @@ export default function FormPage() {
                 </Label>
                 <TextField
                   name="fullName"
-                  className="input h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
+                  className="h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                   errorClassName="input error"
                   type="text"
                   placeholder="Nguyễn Văn A"
@@ -305,20 +305,20 @@ export default function FormPage() {
               </div>
               <div className="flex flex-col mt-8">
                 <Label
-                  name="specialCare"
+                  name="specicalCare"
                   className="label text-lg"
                   errorClassName="label text-lg error"
                 >
                   Tình trạng sức khoẻ đặc biệt của em (các trường hợp cần quan tâm đặc biệt)
                 </Label>
                 <TextField
-                  name="specialCare"
+                  name="specicalCare"
                   className="input h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                   errorClassName="input error"
                   type="text"
                   placeholder=""
                 />
-                <FieldError name="specialCare" className="error-message" />
+                <FieldError name="specicalCare" className="error-message" />
               </div>
               <div className="flex flex-col mt-8">
                 <label className="text-lg">Size áo</label>

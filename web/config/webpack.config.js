@@ -3,7 +3,7 @@ const configDir = __dirname
 module.exports = (config) => {
   config.plugins.forEach((plugin) => {
     if (plugin.constructor.name === 'HtmlWebpackPlugin') {
-      plugin.options.title = 'Đăng Ký Trại - Thanh Niên Gia Định'
+      plugin.options.title = 'Đăng Ký TKH THIẾU NHI 2021'
     }
   })
 
