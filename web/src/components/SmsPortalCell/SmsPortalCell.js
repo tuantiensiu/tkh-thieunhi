@@ -67,15 +67,15 @@ const SEND_SMS_MUTATION = gql`
   }
 `
 
-const bankProvider = 'Techcombank'
-const bankID = `19036831320015`
-const bankName = `TRUONG THANH NHU NGOC`
-const contact = '0902457367'
+const bankProvider = 'Agribank'
+const bankID = `6100205502723`
+const bankName = `ĐOÀN THỊ MỸ THỌ`
+const contact = '0936135310'
 const bankInfo = `${bankID}/${bankProvider}/${bankName}`
 
 const SMS_TEMPLATES = {
   byEvents: [
-    `Bạn đã đăng ký trại {camp}, {fullName}. Vui lòng {action} {amount} qua STK: {bankStatement},nội dung CK: {transactionCode} trong vòng {remainDay} ngày kể từ ngày đăng ký và hoàn tất lệ phí trước ngày {deadlineDay}. Sau {remainDay} ngày hệ thống sẽ tự hủy đơn đăng ký nếu bạn chưa {action}. Chi tiết liên hệ {contact}.`,
+    `Bạn đã đăng ký trại {camp} cho bé {fullNameChild}. Vui lòng {action} {amount} qua STK: {bankStatement},nội dung CK: {transactionCode} trong vòng {remainDay} ngày kể từ ngày đăng ký và hoàn tất lệ phí trước ngày {deadlineDay}. Sau {remainDay} ngày hệ thống sẽ tự hủy đơn đăng ký nếu bạn chưa {action}. Chi tiết liên hệ {contact}.`,
     `Bạn đã đăng ký trại {camp}, {fullName}. Vui lòng {action} {amount} cho {who} trong vòng {remainDay} ngày kể từ ngày đăng ký và hoàn tất lệ phí trước ngày {deadlineDay}. Sau {remainDay} ngày hệ thống sẽ tự hủy đơn đăng ký nếu bạn chưa {action}. Chi tiết liên hệ {contact}.`,
   ],
   byManual: [
@@ -186,9 +186,10 @@ export const Success = ({ sms }) => {
   )
 
   const variables = {
-    camp: 'LINK',
+    camp: 'TKH',
     fullName: profile.fullName,
-    name: khongdau(profile.fullName.split(' ').slice(-2).join(' ')),
+    fullNameChild: profile.fullNameChild,
+    name: khongdau(profile.fullNameChild.split(' ').slice(-2).join(' ')),
     amount: currency(meta.amount),
     totalDeposit,
     balance: currency(balance),

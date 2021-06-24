@@ -108,12 +108,11 @@ export default function FormPage() {
   })
 
   const [meta, setMeta] = useState({
-    clothesSize: 'M',
+    clothesSize: '2',
     group: 1,
-    joinAge: 'gt3',
     gender: 'MALE',
     typeLearn: 'full',
-    paymentLevel: '515000',
+    paymentLevel: '150000',
     offering: 0,
     paymentMethod: 'BANK',
     paymentStage: 'FULL',
@@ -123,6 +122,7 @@ export default function FormPage() {
     completed: false, // Is the form completed payment
     status: 'NO_PAYMENT',
     amount: 0,
+    class: '1',
   })
 
   const onSubmit = (data) => {

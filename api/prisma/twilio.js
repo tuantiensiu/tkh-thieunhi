@@ -5,7 +5,7 @@ const client = twilio(accountSid, authToken)
 
 client.messages
   .create({
-    body: 'Vui long nop le phi qua STK: Vietcombank 0531002575122',
+    body: 'Vui long nop le phi qua STK: Agribank  6100205502723 ',
     from: '+13475072738',
     to: '+84772010496',
   })

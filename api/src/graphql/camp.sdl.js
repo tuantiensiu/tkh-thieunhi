@@ -9,9 +9,11 @@ export const schema = gql`
 
   input CreateCampRegisterInput {
     fullName: String!
+    fullNameChild: String
     nationalId: String
     phoneNumber: String
     birthday: DateTime
+    specicalCare: String
     meta: String
     createdAt: DateTime
   }
