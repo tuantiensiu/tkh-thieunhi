@@ -62,6 +62,7 @@ export const getMessage = (formPayload) => {
   )
   // Get last name and toggle upper case
   const fullName = formPayload.data.fullName
+  // const specialCare = formPayload.data.specialCare
   const lastName = fullName.split(' ')
   const lastNameSlug = khongdau(
     lastName[lastName.length - 1] + ''
@@ -77,12 +78,13 @@ export const getMessage = (formPayload) => {
 
   // Template variables
   const depositeAmount = process.env.DEPOSITE || 500000
-  const contact = '0902457367'
-  const camp = 'LINK'
+  const contact = '0936135310'
+  const camp = 'Thánh Kinh Hè'
+  const camp_syntax = 'TKH'
   const action = paymentStage === 'FULL' ? 'nộp lệ phí' : 'nộp cọc'
-  const bankProvider = 'Techcombank'
-  const bankID = `19036831320015`
-  const bankName = `TRUONG THANH NHU NGOC`
+  const bankProvider = 'Agribank'
+  const bankID = `6100205502723`
+  const bankName = `DOAN THI MY THO`
   const who =
     paymentMethod !== 'BANK'
       ? paymentMethod === 'GROUP_LEADER'
@@ -104,17 +106,17 @@ export const getMessage = (formPayload) => {
     amount = paymentLevel
   }
   const remainDay = paymentMethod === 'BANK' ? 3 : 7
-  const deadlineDay = '18/4'
+  const deadlineDay = '08/08'
 
   // Temp statement
   const bankStatement =
     paymentMethod === 'BANK' ? `${bankID}/${bankProvider}/${bankName}` : ''
-  const transactionCode = `${camp}${group}${lastNationDigit}${lastNameSlug}`
+  const transactionCode = `${camp_syntax}${group}${lastNationDigit}${lastNameSlug}`
   // const s = `${bankStatement}/${transactionCode}`
 
   const messageTemplates = {
-    BANK: `Bạn đã đăng ký trại {camp}, {fullName}. Vui lòng {action} {amount} qua STK: {bankStatement},nội dung CK: {transactionCode} trong vòng {remainDay} ngày kể từ ngày đăng ký và hoàn tất lệ phí trước ngày {deadlineDay}. Sau {remainDay} ngày hệ thống sẽ tự hủy đơn đăng ký nếu bạn chưa {action}. Chi tiết liên hệ {contact}.`,
-    PEOPLE: `Bạn đã đăng ký trại {camp}, {fullName}. Vui lòng {action} {amount} cho {who} trong vòng {remainDay} ngày kể từ ngày đăng ký và hoàn tất lệ phí trước ngày {deadlineDay}. Sau {remainDay} ngày hệ thống sẽ tự hủy đơn đăng ký nếu bạn chưa {action}. Chi tiết liên hệ {contact}.`,
+    BANK: `Bạn đã đăng ký trại {camp} thành công. Vui lòng {action} {amount} qua STK: {bankStatement},nội dung CK: {transactionCode} trong vòng {remainDay} ngày kể từ ngày đăng ký và hoàn tất lệ phí trước ngày {deadlineDay}. Sau {remainDay} ngày hệ thống sẽ tự hủy đơn đăng ký nếu bạn chưa {action}. Chi tiết liên hệ {contact}.`,
+    PEOPLE: `Bạn đã đăng ký trại {camp} . Vui lòng {action} {amount} cho {who} trong vòng {remainDay} ngày kể từ ngày đăng ký và hoàn tất lệ phí trước ngày {deadlineDay}. Sau {remainDay} ngày hệ thống sẽ tự hủy đơn đăng ký nếu bạn chưa {action}. Chi tiết liên hệ {contact}.`,
   }
 
   const variables = {
@@ -152,6 +154,7 @@ export const campRegister = async ({ input }) => {
     const payload = {
       data: {
         fullName: input.fullName,
+        specialCare: input.specialCare,
         nationalId: input.nationalId,
         phoneNumber: formatPhoneNumber(input.phoneNumber),
         birthday: input.birthday,

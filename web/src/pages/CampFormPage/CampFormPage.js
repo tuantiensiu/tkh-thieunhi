@@ -39,7 +39,7 @@ const FORM_MODELS = {
     { value: 'XXL', title: '2XL|63-70 kg' },
     { value: 'XXXL', title: '3XL|71-90 kg' },
   ],
-  class: [
+  className: [
     { value: '1', title: 'Y-sác' },
     { value: '2', title: 'Môi-se' },
     { value: '3', title: 'Giô-suê' },
@@ -122,7 +122,7 @@ export default function FormPage() {
     completed: false, // Is the form completed payment
     status: 'NO_PAYMENT',
     amount: 0,
-    class: '1',
+    className: '1',
   })
 
   const onSubmit = (data) => {
@@ -144,7 +144,7 @@ export default function FormPage() {
             data.monthOfBirth - 1,
             data.dayOfBirth
           ),
-          specicalCare: String(data.specicalCare),
+          specialCare: String(data.specialCare),
           meta: JSON.stringify(meta),
         },
       },
@@ -308,7 +308,7 @@ export default function FormPage() {
               </div>
               <div className="flex flex-col mt-8">
                 <Label
-                  name="specicalCare"
+                  name="specialCare"
                   className="label text-lg"
                   errorClassName="label text-lg error"
                 >
@@ -316,13 +316,13 @@ export default function FormPage() {
                   tâm đặc biệt)
                 </Label>
                 <TextField
-                  name="specicalCare"
+                  name="specialCare"
                   className="input h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                   errorClassName="input error h-14 rounded text-2xl p-4 mt-2 bg-gray-300"
                   type="text"
                   placeholder=""
                 />
-                <FieldError name="specicalCare" className="error-message" />
+                <FieldError name="specialCare" className="error-message" />
               </div>
               <div className="flex flex-col mt-8">
                 <label className="text-lg">Size áo</label>
@@ -368,7 +368,7 @@ export default function FormPage() {
                 <label className="text-lg">Lớp</label>
                 <GridRadio
                   // eslint-disable-next-line prefer-spread
-                  list={FORM_MODELS.class}
+                  list={FORM_MODELS.className}
                   cols={3}
                   onSelect={(value) => onChangeRadio('group')(value)}
                 />
